@@ -1,0 +1,5 @@
+<div class="container">
+<p><h1><%= @sitter.display_name %></h1>
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@sitter.latitude}%2C#{@sitter.longitude}" %>
+
+</div>

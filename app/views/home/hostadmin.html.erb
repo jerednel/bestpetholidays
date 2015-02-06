@@ -1,0 +1,38 @@
+<a name="about"></a>
+
+
+    <!-- Page Content -->
+
+	<a  name="services"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <h1>Pet Host Admin Area</h1>
+            <table>
+            	<tr>
+            		<td><strong>Display Name:</strong> </td>
+            		<td><%= @user.display_name %></td>
+            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
+            	</tr>
+            	<tr>
+            		<td><strong>Website:</strong></td>
+            		<td><%= @user.website %></td>
+            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
+            	</tr>
+            	<tr>
+            		<td><strong>Description:</strong></td>
+            		<td><%= @user.description %></td>
+            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
+            	</tr>
+            	<tr>
+            		<td><strong>Post Code:</strong></td>
+            		<td><%= @user.post_code %></td>
+            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
+            	</tr>
+            </table>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->

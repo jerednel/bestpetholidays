@@ -1,0 +1,35 @@
+<div class="container">
+<h1>Listing locations</h1>
+
+
+<%= form_tag locations_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Pet Care Provider</th>
+      <th>Website</th>
+      <th>Post Code</th>
+      <th>Distance (Miles)</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= link_to location.display_name, sitter_path(location.id) %></td>
+        <td><%= location.website %></td>
+        <td><%= location.post_code %></td>
+        <td><%= location.distance.round(2) %> miles</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
