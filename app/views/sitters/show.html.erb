@@ -1,5 +1,14 @@
 <div class="container">
-<p><h1><%= @sitter.display_name %></h1>
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@sitter.latitude}%2C#{@sitter.longitude}" %>
+<h1><%= @sitter.display_name %></h1>
 
+		<p><strong>Nightly Rate</strong>: <%= @sitter.rate %></p>
+		<p><%= @sitter.description %></p>
+<%= form_tag new_reservation_path do %>
+	Check In<br><%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %><br>
+	Check Out<br><%= date_field(:reservation, :res_end_date) %><br>
+	<%= hidden_field_tag(:sitter_id, params[:id]) %>
+ 	 <%= submit_tag("Book Holiday") %>
+<% end %>
+
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@sitter.latitude}%2C#{@sitter.longitude}" %>
 </div>

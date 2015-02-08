@@ -1,5 +1,6 @@
 class SittersController < ApplicationController
 	def show
 		@sitter = Sitter.find(params[:id])
-	end
+		@reservation = Reservation.new
+     end
 end

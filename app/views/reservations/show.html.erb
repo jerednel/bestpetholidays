@@ -1,0 +1,40 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Res status:</strong>
+  <%= @reservation.res_status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user_id %>
+</p>
+
+<p>
+  <strong>Sitter:</strong>
+  <%= Sitter.find(@reservation.sitter_id).display_name %>
+</p>
+
+<p>
+  <strong>Res details:</strong>
+  <%= @reservation.res_details %>
+</p>
+
+<p>
+  <strong>Res price:</strong>
+  <%= @reservation.res_price %>
+</p>
+
+<p>
+  <strong>Res start date:</strong>
+  <%= @reservation.res_start_date %>
+</p>
+
+<p>
+  <strong>Res end date:</strong>
+  <%= @reservation.res_end_date %>
+</p>
+
+<%= link_to 'Back', reservations_path %>
+</div>

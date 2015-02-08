@@ -1,0 +1,50 @@
+
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :reservation_start_date, "Check In: #{Date.parse(params[:reservation][:res_start_date]).to_formatted_s(:short)}"  %>
+    <%= f.hidden_field :res_start_date, :value => params[:reservation][:res_start_date]  %>
+-
+    <%= f.label :reservation_end_date, "Check Out: #{Date.parse(params[:reservation][:res_end_date]).to_formatted_s(:short)}" %><br>
+    <%= f.hidden_field :res_end_date, :value => params[:reservation][:res_end_date] %>
+  </div>
+  <div class="field">
+
+    <%= f.hidden_field :res_status, :value => 'Proposed' %>
+  </div>
+  <% if user_signed_in? %>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => @user.id %>
+  </div>
+  <% end %>
+  <% if sitter_signed_in? %>
+  <div>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.hidden_field :sitter_id, :value => @sitter.id %>
+  </div>
+  <div class="field">
+    <%= f.label :reservation_details, "Additional Details (What type of pet, pick up and drop off time requests, etc...)" %><br>
+    <%= f.text_area :res_details %>
+  </div>
+  <div class="field">
+    <%= f.label :res_price, "£#{@total_price} for #{@days} days " %><br>
+    <%= f.hidden_field :res_price, :value => @total_price %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="container">
+<h1>Listing reservations</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Sitter</th>
+      <th>Request</th>
+      <th>Cost</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.res_status %></td>
+        <td><%= link_to Sitter.find(reservation.sitter_id).display_name, sitter_path(reservation.sitter_id) %></td>
+        <td><%= reservation.res_details %></td>
+        <td><%= reservation.res_price %></td>
+        <td><%= reservation.res_start_date %></td>
+        <td><%= reservation.res_end_date %></td>
+        <td><%= link_to 'Show', reservation %></td>
+        <td><%= link_to 'Cancel', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation', new_reservation_path %>
+</div>

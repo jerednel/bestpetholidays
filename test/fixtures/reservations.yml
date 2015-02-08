@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  res_status: MyString
+  user_id: 1
+  sitter_id: 1
+  res_details: MyText
+  res_price: 1.5
+  res_start_date: 2015-02-06
+  res_end_date: 2015-02-06
+
+two:
+  res_status: MyString
+  user_id: 1
+  sitter_id: 1
+  res_details: MyText
+  res_price: 1.5
+  res_start_date: 2015-02-06
+  res_end_date: 2015-02-06

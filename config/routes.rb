@@ -1,5 +1,7 @@
 Bestpetholidays::Application.routes.draw do
 
+  resources :reservations
+  post "reservations/new" => "reservations#new"
   resources :locations
 
   devise_for :sitters, :controllers => {:registrations => "registrations"}
