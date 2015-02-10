@@ -5,7 +5,11 @@ class ReservationsController < ApplicationController
 
   def index
     #@reservations = Reservation.all
-    @reservations = current_user.reservations
+    if user_signed_in?
+      @reservations = current_user.reservations
+    elsif sitter_signed_in?
+      @reservations = current_sitter.reservations
+    end
     respond_with(@reservations)
   end
 

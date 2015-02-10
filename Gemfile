@@ -7,6 +7,7 @@ gem 'sqlite3'
 gem 'geocoder'
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
+gem 'event-calendar', :require => 'event_calendar'
 gem 'coffee-rails', '~> 4.0.0'
 gem "watu_table_builder", :require => "table_builder"
 gem 'jquery-rails'

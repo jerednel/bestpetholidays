@@ -52,6 +52,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    event-calendar (2.3.3)
     execjs (2.2.2)
     geocoder (1.2.7)
     hike (1.2.3)
@@ -127,6 +128,7 @@ DEPENDENCIES
   activerecord-session_store!
   coffee-rails (~> 4.0.0)
   devise
+  event-calendar
   geocoder
   jbuilder (~> 1.2)
   jquery-rails
