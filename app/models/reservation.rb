@@ -7,7 +7,7 @@ class Reservation < ActiveRecord::Base
 		if self.res_status == 'Accepted'
 			return "#00FF66" #any html acceptable color 
 		elsif self.res_status == 'Proposed'
-			return "##CCFF00"
+			return "#CCFF00"
 		end
 
 	end

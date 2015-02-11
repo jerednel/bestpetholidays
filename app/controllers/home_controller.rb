@@ -19,7 +19,7 @@ class HomeController < ApplicationController
    		@year = (params[:year] || (Time.zone || Time).now.year).to_i
 
     	@shown_month = Date.civil(@year, @month)
-		@event_strips = current_sitter.reservations.event_strips_for_month(@shown_month)
+		@event_strips = current_sitter.reservations.where(:res_status => ['Accepted', 'Proposed']).event_strips_for_month(@shown_month)
 	end
 
 
