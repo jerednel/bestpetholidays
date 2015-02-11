@@ -1,8 +1,7 @@
 class Sitter < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  extend FriendlyId
-  friendly_id :display_name
+
   has_many :reservations
   has_many :users, through: :reservations
   validates :display_name, presence: true
