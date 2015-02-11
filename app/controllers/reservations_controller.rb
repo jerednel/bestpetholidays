@@ -1,6 +1,5 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
   respond_to :html
 
   def index
@@ -14,7 +13,13 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    respond_with(@reservation)
+    if user_signed_in?
+      #respond_with(@reservation)
+      current_user.reservations.find_by_id(params[:id])
+    elsif sitter_signed_in?
+      current_sitter.reservations.find_by_id(params[:id])
+      #respond_with(@reservation)
+    end
   end
 
   def new
@@ -54,6 +59,7 @@ class ReservationsController < ApplicationController
   end
 
   private
+
     def set_reservation
       @reservation = Reservation.find(params[:id])
     end
