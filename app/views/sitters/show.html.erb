@@ -1,4 +1,10 @@
 <div class="container">
+	    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 <h1><%= @sitter.display_name %></h1>
 
 <table class="table table-nonfluid">

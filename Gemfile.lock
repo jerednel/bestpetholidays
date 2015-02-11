@@ -54,6 +54,8 @@ GEM
     erubis (2.7.0)
     event-calendar (2.3.3)
     execjs (2.2.2)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     geocoder (1.2.7)
     hike (1.2.3)
     i18n (0.7.0)
@@ -135,6 +137,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   event-calendar
+  friendly_id
   geocoder
   jbuilder (~> 1.2)
   jquery-rails

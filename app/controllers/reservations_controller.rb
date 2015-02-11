@@ -29,14 +29,18 @@ class ReservationsController < ApplicationController
       @user = current_sitter
     end
 
-    @sitter = Sitter.find(params[:sitter_id])
-    @reservation = Reservation.new
-    start_date = params[:reservation][:res_start_date].to_date
-    end_date = params[:reservation][:res_end_date].to_date
-    @days = end_date - start_date
-    @total_price = @days * @sitter.rate
-    respond_with(@reservation)
-
+    if params[:reservation][:res_start_date] == ""  || params[:reservation][:res_end_date] == ""
+      redirect_to(:back)
+      flash[:alert] = "Please enter valid check-in and check-out dates."
+    else
+      @sitter = Sitter.find(params[:sitter_id])
+      @reservation = Reservation.new
+      start_date = params[:reservation][:res_start_date].to_date
+      end_date = params[:reservation][:res_end_date].to_date
+      @days = end_date - start_date
+      @total_price = @days * @sitter.rate
+      respond_with(@reservation)
+    end
   end
 
   def edit

@@ -1,7 +1,12 @@
 <a name="about"></a>
     <div class="intro-header">
         <div class="container">
-
+    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
