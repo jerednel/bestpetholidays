@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   respond_to :html
 
   def index
@@ -59,6 +59,7 @@ class ReservationsController < ApplicationController
     end
 
     def reservation_params
+      params.permit(:res_status)
       params.require(:reservation).permit(:res_status, :user_id, :sitter_id, :res_details, :res_price, :res_start_date, :res_end_date)
     end
 end

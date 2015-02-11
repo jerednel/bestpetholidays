@@ -1,6 +1,6 @@
 <div class="container">
 <h2>Sign up</h2>
-
+<%= resource_name %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -8,18 +8,33 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
+    <% if resource_name.to_s == 'sitter' %>
   <div class="field">
-    <%= f.label :display_name %><br />
+    <%= f.label :display_name, 'Business Name' %><br />
     <%= f.text_field :display_name %>
   </div>
+<% else %>
+  <div class="field">
+    <%= f.label :display_name, 'Full Name' %><br />
+    <%= f.text_field :display_name %>
+  </div>
+<% end %>
+  <% if resource_name.to_s == 'sitter' %>
+   <div class="field">
+    <%= f.label :description, "Description of Services" %><br />
+    <%= f.text_area :description %>
+  </div>
+  <% else %>
+  <% end %>
+
+
+
+<% if resource_name.to_s == 'sitter' %>
     <div class="field">
     <%= f.label :website %><br />
     <%= f.text_field :website %>
   </div>
+<% end %>
     <div class="field">
     <%= f.label :post_code %><br />
     <%= f.text_field :post_code %>

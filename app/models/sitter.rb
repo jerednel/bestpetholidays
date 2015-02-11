@@ -3,6 +3,9 @@ class Sitter < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :reservations
   has_many :users, through: :reservations
+  validates :display_name, presence: true
+  validates :post_code, presence: true
+  validates :description, presence: true
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
