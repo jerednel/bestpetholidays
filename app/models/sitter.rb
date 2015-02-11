@@ -1,7 +1,12 @@
 class Sitter < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend FriendlyId
+  friendly_id :display_name, use: :slugged
 
+def should_generate_new_friendly_id?
+   new_record? || slug.nil? || slug.blank? # you can add more condition here
+end
   has_many :reservations
   has_many :users, through: :reservations
   validates :display_name, presence: true

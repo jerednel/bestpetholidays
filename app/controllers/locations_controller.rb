@@ -5,9 +5,9 @@ class LocationsController < ApplicationController
 
   def index
     if params[:search].present?
-      @locations = Sitter.near(params[:search], 50).order('distance')
+      @locations = Sitter.friendly.near(params[:search], 50).order('distance')
     else
-      @locations = Sitter.all
+      @locations = Sitter.friendly.all
     end
   end
 

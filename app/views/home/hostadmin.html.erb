@@ -49,7 +49,7 @@
             	</tr>
             </table>
 <br>
-            <%= link_to 'View Profile', sitter_path(@user.id) %>
+            <%= link_to 'View Profile', sitter_path(current_sitter.to_param) %>
         </div>
         <!-- /.container -->
 

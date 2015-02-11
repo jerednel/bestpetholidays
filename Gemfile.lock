@@ -137,7 +137,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   event-calendar
-  friendly_id
+  friendly_id (~> 5.1.0)
   geocoder
   jbuilder (~> 1.2)
   jquery-rails

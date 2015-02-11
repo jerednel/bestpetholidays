@@ -20,4 +20,4 @@ gem "watu_table_builder", :require => "table_builder"
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
-gem 'friendly_id'
+gem 'friendly_id', '~> 5.1.0' 
