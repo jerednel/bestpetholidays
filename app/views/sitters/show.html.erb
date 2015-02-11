@@ -1,14 +1,22 @@
 <div class="container">
 <h1><%= @sitter.display_name %></h1>
 
-		<p><strong>Nightly Rate</strong>: <%= @sitter.rate %></p>
-		<p><%= @sitter.description %></p>
+<table class="table table-nonfluid">
+
+	<tr><td><strong>Website</strong></td><td><%= link_to @sitter.website, @sitter.website %></td></tr>
+	<tr><td><strong>Nightly Rate</strong></td><td> <%= @sitter.rate %></td></tr>
+	<tr><td><strong>Overview</strong></td><td><%= @sitter.description %></td></tr>
+</table>
 <%= form_tag new_reservation_path do %>
-	Check In<br><%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %><br>
-	Check Out<br><%= date_field(:reservation, :res_end_date) %><br>
-	<%= hidden_field_tag(:sitter_id, params[:id]) %>
- 	 <%= submit_tag("Book Holiday") %>
+<table class="table table-nonfluid">
+	<thead><tr><th>Check In</th><th>Check Out</th></tr></thead>
+	<tr><td class="col-md-1"><%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %></td>
+		<td class="col-md-1"><%= date_field(:reservation, :res_end_date) %></td><td><%= hidden_field_tag(:sitter_id, params[:id]) %>
+ 	 <%= submit_tag("Book Holiday") %></td></tr>
+</table>
 <% end %>
+
+
 
 	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@sitter.latitude}%2C#{@sitter.longitude}" %>
 </div>

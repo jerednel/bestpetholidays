@@ -12,4 +12,5 @@ class Sitter < ActiveRecord::Base
 
 	geocoded_by :post_code
 	after_validation :geocode
+
 end
