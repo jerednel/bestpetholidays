@@ -40,13 +40,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand topnav" href="#">Best Pet Holidays</a>
-
-                  <p class="alert alert-success"><%= notice %></p>
+    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-<br><br>
+                
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
