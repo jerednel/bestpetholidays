@@ -14,7 +14,7 @@ end
   validates :description, presence: true
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
 	geocoded_by :post_code
 	after_validation :geocode
