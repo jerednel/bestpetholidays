@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211230142) do
+ActiveRecord::Schema.define(version: 20150214225424) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -94,8 +94,13 @@ ActiveRecord::Schema.define(version: 20150211230142) do
     t.float    "longitude"
     t.float    "rate"
     t.string   "slug"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
+  add_index "sitters", ["confirmation_token"], name: "index_sitters_on_confirmation_token", unique: true
   add_index "sitters", ["email"], name: "index_sitters_on_email", unique: true
   add_index "sitters", ["reset_password_token"], name: "index_sitters_on_reset_password_token", unique: true
   add_index "sitters", ["slug"], name: "index_sitters_on_slug", unique: true
@@ -120,8 +125,13 @@ ActiveRecord::Schema.define(version: 20150211230142) do
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.text     "description"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
