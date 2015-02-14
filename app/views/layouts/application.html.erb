@@ -103,7 +103,9 @@
   					
   					<li><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></li>
  					<li> <%= link_to "Logout", destroy_sitter_session_path, method: :delete, :class => 'footer-menu-divider'  %></li>
-				<% else %>
+				<% elsif user_signed_in? %>
+
+                <% else %>
   					<li><%= link_to "Host Sign up", new_sitter_registration_path, :class => 'footer-menu-divider'  %></li>
   					<li><%= link_to "Host Login", new_sitter_session_path, :class => 'navbar-link'  %></li>
 				<% end %>

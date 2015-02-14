@@ -22,11 +22,11 @@
         <td><%= reservation.res_status %></td>
         <td><%= link_to Sitter.find(reservation.sitter_id).display_name, sitter_path(reservation.sitter_id) %></td>
         <td><%= reservation.res_details %></td>
-        <td><%= reservation.res_price %></td>
+        <td><%= number_to_currency(reservation.res_price, :unit => "£") %></td>
         <td><%= reservation.res_start_date %></td>
         <td><%= reservation.res_end_date %></td>
         <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Cancel', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel Reservation', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,5 +34,9 @@
 
 <br>
 
-<%= link_to 'New Reservation', new_reservation_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Reservation', locations_path %>
+  <% elsif sitter_signed_in? %>
+  <%= link_to 'New Reservation', new_reservation_path %>
+  <% end %>
 </div>

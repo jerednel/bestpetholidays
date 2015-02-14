@@ -21,6 +21,9 @@
   </thead>
 
   <tbody>
+    <% if params[:search].nil? %>
+
+    <% else %>
     <% @locations.each do |location| %>
       <tr>
         <td><%= link_to location.display_name, sitter_path(location.to_param) %></td>
@@ -28,6 +31,8 @@
         <td><%= location.post_code %></td>
         <td><%= location.distance.round(2) %> miles</td>
       </tr>
+    <% end %>
+
     <% end %>
   </tbody>
 </table>

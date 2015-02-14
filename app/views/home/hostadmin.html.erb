@@ -7,47 +7,25 @@
     <div class="content-section-a">
 
         <div class="container">
+
+            <p><%= link_to "Add On-The-Fly Reservation", new_reservation_path %> - <%= link_to 'Edit Profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %> -  <%= link_to 'View Profile', sitter_path(current_sitter.to_param) %></p>
+            <p><strong>Monthly Booked Revenue: </strong> <%= number_to_currency(@booked_revenue, :unit => "£") %></p>
+            <% if @reservation_requests.count > 0 %>
             <h2>Reservation Requests</h2>
 
             <% @reservation_requests.each do |request| %>
               <div class="alert alert-success" role="alert"><%= User.find(request.user_id).display_name %> said...<br><%= request.res_start_date.to_formatted_s(:short) %> to <%= request.res_end_date.to_formatted_s(:short) %> - <%= request.res_details %>
- <table><tr><td><%= form_tag("/hostadmin", method: "get", :class => "form-inline") do %><%= hidden_field_tag 'reservation_id', request.id %><%= hidden_field_tag 'res_status', 'Accepted' %><%= submit_tag("Approve", :class => 'btn btn-primary btn-sm inline') %><% end %> </td><td>-</td><td>  <%= form_tag("/hostadmin", method: "get", :class => "form-inline") do %><%= hidden_field_tag 'reservation_id', request.id %><%= hidden_field_tag 'res_status', 'Denied' %><%= submit_tag("Deny", :class => 'btn btn-primary btn-sm inline') %><% end %> </td></tr></table>
+ <table><tr><td><%= form_tag("/hostadmin", method: "get", :class => "form-inline") do %><%= hidden_field_tag 'reservation_id', request.id %><%= hidden_field_tag 'res_status', 'Accepted' %><%= submit_tag("Approve for #{number_to_currency(request.res_price, :unit => '£')}", :class => 'btn btn-primary btn-sm inline') %><% end %> </td><td>-</td><td>  <%= form_tag("/hostadmin", method: "get", :class => "form-inline") do %><%= hidden_field_tag 'reservation_id', request.id %><%= hidden_field_tag 'res_status', 'Denied' %><%= submit_tag("Deny", :class => 'btn btn-primary btn-sm inline') %><% end %> </td></tr></table>
 </div>
             <% end %>
-
+            <% else %>
+            <em>No new reservation requests</em>
+            <% end %>
 
 <h2>Calendar</h2>
 
 <%= raw(event_calendar) %>
-            
-            <h4>Profile Info</h4>
-            <table>
-            	<tr>
-            		<td><strong>Display Name:</strong> </td>
-            		<td><%= @user.display_name %></td>
-            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
-            	</tr>
-            	<tr>
-            		<td><strong>Website:</strong></td>
-            		<td><%= @user.website %></td>
-            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
-            	</tr>
-                <tr>
-                    <td><strong>Rate:</strong></td>
-                    <td><%= @user.rate %></td>
-                    <td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
-                </tr>                
-            	<tr>
-            		<td><strong>Description:</strong></td>
-            		<td><%= @user.description %></td>
-            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
-            	</tr>
-            	<tr>
-            		<td><strong>Post Code:</strong></td>
-            		<td><%= @user.post_code %></td>
-            		<td><%= link_to 'Edit profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %></td>
-            	</tr>
-            </table>
+           
 <br>
             <%= link_to 'View Profile', sitter_path(current_sitter.to_param) %>
         </div>

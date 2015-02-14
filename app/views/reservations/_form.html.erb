@@ -11,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+  <% if user_signed_in? %>
   <div class="field">
     <%= f.label :reservation_start_date, "Check In: #{Date.parse(params[:reservation][:res_start_date]).to_formatted_s(:short)}"  %>
     <%= f.hidden_field :res_start_date, :value => params[:reservation][:res_start_date]  %>
@@ -18,9 +19,21 @@
     <%= f.label :reservation_end_date, "Check Out: #{Date.parse(params[:reservation][:res_end_date]).to_formatted_s(:short)}" %><br>
     <%= f.hidden_field :res_end_date, :value => params[:reservation][:res_end_date] %>
   </div>
+  <% end %>
+  <% if sitter_signed_in? %>
+ <div class="field">
+  <%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %>
+</div>
+<div class="field">
+    <td class="col-md-1"><%= date_field(:reservation, :res_end_date) %>
+  </div>
+  <% end %>
   <div class="field">
-
+    <% if user_signed_in? %>
     <%= f.hidden_field :res_status, :value => 'Proposed' %>
+    <% elsif sitter_signed_in? %>
+    <%= f.hidden_field :res_status, :value => 'Accepted' %>
+    <% end %>
   </div>
   <% if user_signed_in? %>
   <div class="field">
@@ -29,7 +42,7 @@
   <% end %>
   <% if sitter_signed_in? %>
   <div>
-    <%= f.hidden_field :user_id, :value => @user.id %>
+    
   </div>
   <% end %>
   <div class="field">
@@ -39,9 +52,16 @@
     <%= f.label :reservation_details, "Additional Details (What type of pet, pick up and drop off time requests, etc...)" %><br>
     <%= f.text_area :res_details %>
   </div>
+
   <div class="field">
+      <% if user_signed_in? %>
     <%= f.label :res_price, "£#{@total_price} for #{@days} days " %><br>
     <%= f.hidden_field :res_price, :value => @total_price %>
+    <% elsif sitter_signed_in? %>
+    <%= f.label :res_price, "Total Price Charged (numeric value)" %>
+  </div><div class="field">
+    <%= f.text_field :res_price %>
+      <% end %>
   </div>
 
   <div class="actions">

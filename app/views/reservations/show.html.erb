@@ -3,13 +3,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Res status:</strong>
+  <strong>Reservation Status</strong>
   <%= @reservation.res_status %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @reservation.user_id %>
+  <strong>Client:</strong>
+  <% if @reservation.user_id.nil? %>
+  On-The-Fly Reservation
+  <% else %>
+  <%= User.find(@reservation.user_id).display_name %>
+  <% end %>
 </p>
 
 <p>
@@ -18,22 +22,22 @@
 </p>
 
 <p>
-  <strong>Res details:</strong>
+  <strong>Details:</strong>
   <%= @reservation.res_details %>
 </p>
 
 <p>
-  <strong>Res price:</strong>
+  <strong>Total Price:</strong>
   <%= @reservation.res_price %>
 </p>
 
 <p>
-  <strong>Res start date:</strong>
+  <strong>Check-In:</strong>
   <%= @reservation.res_start_date %>
 </p>
 
 <p>
-  <strong>Res end date:</strong>
+  <strong>Check-Out:</strong>
   <%= @reservation.res_end_date %>
 </p>
 

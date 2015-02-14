@@ -28,18 +28,24 @@ class ReservationsController < ApplicationController
     elsif sitter_signed_in?
       @user = current_sitter
     end
+    if user_signed_in?
+        if params[:reservation][:res_start_date] == ""  || params[:reservation][:res_end_date] == ""
+          redirect_to(:back)
+          flash[:alert] = "Please enter valid check-in and check-out dates."
+        else
+          @sitter = Sitter.friendly.find(params[:sitter_id])
+          @reservation = Reservation.new
+          start_date = params[:reservation][:res_start_date].to_date
+          end_date = params[:reservation][:res_end_date].to_date
+          @days = end_date - start_date
+          @total_price = @days * @sitter.rate
+          respond_with(@reservation)
+        end
 
-    if params[:reservation][:res_start_date] == ""  || params[:reservation][:res_end_date] == ""
-      redirect_to(:back)
-      flash[:alert] = "Please enter valid check-in and check-out dates."
-    else
-      @sitter = Sitter.find(params[:sitter_id])
+    elsif sitter_signed_in?
+      @sitter = current_sitter
       @reservation = Reservation.new
-      start_date = params[:reservation][:res_start_date].to_date
-      end_date = params[:reservation][:res_end_date].to_date
-      @days = end_date - start_date
-      @total_price = @days * @sitter.rate
-      respond_with(@reservation)
+
     end
   end
 
