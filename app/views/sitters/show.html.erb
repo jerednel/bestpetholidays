@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <title><%= @sitter.display_name %> - Pet Sitters in <%= @city %>, <%= @sitter.post_code %>, UK </title>
+<% end %>
 <div class="container">
 	    <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -6,11 +9,11 @@
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 <h1><%= @sitter.display_name %></h1>
-
+<h4>Pet Sitting in <%= @city %></h4>
 <table class="table table-nonfluid">
 
 	<tr><td><strong>Website</strong></td><td><%= link_to @sitter.website, @sitter.website %></td></tr>
-	<tr><td><strong>Nightly Rate</strong></td><td> <%= @sitter.rate %></td></tr>
+	<tr><td><strong>Nightly Rate</strong></td><td> <%= number_to_currency(@sitter.rate, :unit => "£") %></td></tr>
 	<tr><td><strong>Overview</strong></td><td><%= @sitter.description %></td></tr>
 </table>
 <%= form_tag new_reservation_path do %>

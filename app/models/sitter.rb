@@ -1,6 +1,7 @@
 class Sitter < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  require 'geocoder'
   extend FriendlyId
   friendly_id :display_name, use: :slugged
 
@@ -18,5 +19,16 @@ end
 
 	geocoded_by :post_code
 	after_validation :geocode
+
+
+ reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      # populate your model
+      obj.city    = geo.city
+      obj.zipcode = geo.postal_code
+      obj.country = geo.country_code
+    end
+  end
+
 
 end

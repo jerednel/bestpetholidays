@@ -1,6 +1,9 @@
 <div class="container">
 <h2>Sign up</h2>
-<%= resource_name %>
+<% if resource_name.to_s == 'sitter' %>
+<p>Congratulations!  You're one step away from getting great online placement for your business as well as scheduling and marketing tools for your pet sitting.</p>
+<% end %>
+<p>You will need to confirm your email account before your account becomes active.  You should receive an email within a half hour to confirm.</p>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
