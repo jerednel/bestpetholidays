@@ -16,6 +16,10 @@
 	<tr><td><strong>Nightly Rate</strong></td><td> <%= number_to_currency(@sitter.rate, :unit => "£") %></td></tr>
 	<tr><td><strong>Overview</strong></td><td><%= @sitter.description %></td></tr>
 </table>
+
+<% if !user_signed_in? || !sitter_signed_in? %>
+<p><em>Please <strong><%= link_to "Sign Up", new_user_registration_path %></strong> or <strong><%= link_to "Log In", new_user_session_path %></strong> to make a reservation</em></p>
+<% else %>
 <%= form_tag new_reservation_path do %>
 <table class="table table-nonfluid">
 	<thead><tr><th>Check In</th><th>Check Out</th></tr></thead>
@@ -23,6 +27,8 @@
 		<td class="col-md-1"><%= date_field(:reservation, :res_end_date) %></td><td><%= hidden_field_tag(:sitter_id, params[:id]) %>
  	 <%= submit_tag("Book Holiday") %></td></tr>
 </table>
+<% end %>
+
 <% end %>
 
 
