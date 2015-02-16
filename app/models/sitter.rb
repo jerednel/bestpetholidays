@@ -9,6 +9,7 @@ def should_generate_new_friendly_id?
    new_record? || slug.nil? || slug.blank? # you can add more condition here
 end
   has_many :reservations
+  has_many :pets
   has_many :users, through: :reservations
   validates :display_name, presence: true
   validates :post_code, presence: true

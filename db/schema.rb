@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214225424) do
+ActiveRecord::Schema.define(version: 20150216193017) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20150214225424) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pets", force: true do |t|
+    t.string   "pet_type"
+    t.string   "b"
+    t.string   "breed"
+    t.string   "name"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sitter_id"
   end
 
   create_table "reservations", force: true do |t|

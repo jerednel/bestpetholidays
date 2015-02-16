@@ -1,0 +1,37 @@
+
+  <h2>Register a new pet</h2>
+  <div class="form-group">
+<%= form_for(@pet) do |f| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% @pet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :sitter_id, :value => current_sitter.id %>
+  <table class="table" style="width:50%">
+    <tr>
+      <td><%= f.label :name, 'Pet Name' %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :pet_type, 'Pet Type' %></td>
+      <td><%= f.text_field :pet_type %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :breed, 'Pet Breed' %></td>
+      <td><%= f.text_field :breed %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :summary, 'Pet Summary' %></td>
+      <td><%= f.text_area :summary, placeholder: 'Feeding schedules, allergic reactions, etc...', rows: 5 %></td>
+    </tr>    
+    <tr><td><%= f.submit 'Create New Pet' %></td></tr>
+</table>
+<% end %>
+</div>

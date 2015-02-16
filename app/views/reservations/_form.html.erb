@@ -48,9 +48,9 @@
   <div class="field">
     <%= f.hidden_field :sitter_id, :value => @sitter.id %>
   </div>
-  <div class="field">
-    <%= f.label :reservation_details, "Additional Details (What type of pet, pick up and drop off time requests, etc...)" %><br>
-    <%= f.text_area :res_details %>
+  <div class="form-group" style="width:50%">
+    <%= f.label :reservation_details, "Additional Details" %><br>
+    <%= f.text_area :res_details, class: 'form-control', placeholder: 'Breed of pet, pick up and drop off requests, any special needs, etc..' %>
   </div>
 
   <div class="field">
@@ -60,11 +60,16 @@
     <% elsif sitter_signed_in? %>
     <%= f.label :res_price, "Total Price Charged (numeric value)" %>
   </div><div class="field">
-    <%= f.text_field :res_price %>
+    <%= f.text_field :res_price, placeholder: 'ex 125' %>
       <% end %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <% if user_signed_in? %>
+    <%= f.submit 'Request Reservation' %>
+    <% elsif sitter_signed_in? %>
+    <%= f.submit 'Create Reservation' %>
+    <% end %>
   </div>
+
 <% end %>

@@ -10,4 +10,5 @@ Bestpetholidays::Application.routes.draw do
   get "/hostadmin" => "home#hostadmin", as: :sitter_root
   devise_for :users, :controllers => {:registrations => "uregistrations"}
   resources :sitters
+  resources :pets
 end
