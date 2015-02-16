@@ -1,0 +1,11 @@
+<div class="container">
+	<h3>Pets You Look After</h3>
+	<table class="table">
+	<% @pets.each do |pet| %>
+		<tr><td><strong><%= link_to pet.name, pet %> </strong> </td><td> <%= link_to "Add reservation for #{pet.name}", new_reservation_path(:pet_id => pet.id), class: 'btn btn-primary btn-sm', style: 'color:white' %>
+		
+		</td></tr>
+	<% end %>
+	</table>
+	<%= link_to 'Add New Pet', new_pet_path %>
+</div>

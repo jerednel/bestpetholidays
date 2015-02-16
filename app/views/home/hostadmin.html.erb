@@ -8,7 +8,7 @@
 
         <div class="container">
 
-            <p><%= link_to "Add On-The-Fly Reservation", new_reservation_path %> - <%= link_to 'Edit Profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %> -  <%= link_to 'View Profile', sitter_path(current_sitter.to_param) %></p>
+            <p><%= link_to "Add Pet Profile", new_pet_path %> - <%= link_to "Add Reservation", new_reservation_path %> - <%= link_to 'Edit My Profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %> -  <%= link_to 'View Profile', sitter_path(current_sitter.to_param) %></p>
             <p><strong>Monthly Booked Revenue: </strong> <%= number_to_currency(@booked_revenue, :unit => "£") %></p>
             <% if @reservation_requests.count > 0 %>
             <h2>Reservation Requests</h2>

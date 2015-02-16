@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
 respond_to :html, :xml, :json
 	def index
-
+		@pets = current_sitter.pets
 	end
 
 	def show
@@ -26,7 +26,11 @@ respond_to :html, :xml, :json
 	    @pet.save
 	    respond_with(@pet)
   	end
-
+  def destroy
+  	@pet = Pet.find(params[:id])
+    @pet.destroy
+    respond_with(@pet)
+  end
   	  private
 
     def set_pet
