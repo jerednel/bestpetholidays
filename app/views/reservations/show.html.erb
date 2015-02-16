@@ -1,45 +1,65 @@
-<br>
+<% content_for :head do %>
+  <title>Reservation with <%= Sitter.find(@reservation.sitter_id).display_name %> </title>
+<% end %>
+
 <div class="container">
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Reservation Status</strong>
-  <%= @reservation.res_status %>
-</p>
+       <br>
 
-<p>
-  <strong>Client:</strong>
-  <% if @reservation.user_id.nil? %>
-  On-The-Fly Reservation
-  <% else %>
-  <%= User.find(@reservation.user_id).display_name %>
-  <% end %>
-</p>
 
-<p>
-  <strong>Sitter:</strong>
-  <%= Sitter.find(@reservation.sitter_id).display_name %>
-</p>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Your Reservation With <%= Sitter.find(@reservation.sitter_id).display_name %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Location:</td>
+                        <td><%= Sitter.find(@reservation.sitter_id).post_code %></td>
+                      </tr>
+                      <tr>
+                        <td>Total Cost:</td>
+                        <td><%= number_to_currency(@reservation.res_price, :unit => "£")  %></td>
+                      </tr>
+                   
+                      <tr>
+                        <td>Reservation Status:</td>
+                        <td><%= @reservation.res_status %></td>
+                      </tr>
+                      <tr>
+                        <td>Check-In:</td>
+                        <td><%= @reservation.res_start_date.strftime('%d %b, %Y')    %></td>
+                      </tr>
+<tr>
+                        <td>Check-Out:</td>
+                        <td><%= @reservation.res_end_date.strftime('%d %b, %Y') %></td>
+                      </tr>
 
-<p>
-  <strong>Details:</strong>
-  <%= @reservation.res_details %>
-</p>
 
-<p>
-  <strong>Total Price:</strong>
-  <%= @reservation.res_price %>
-</p>
+                     
+                    </tbody>
+                  </table>
+                  
 
-<p>
-  <strong>Check-In:</strong>
-  <%= @reservation.res_start_date %>
-</p>
+<iframe width="375" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= Sitter.find(@reservation.sitter_id).post_code %>&key=AIzaSyC5dU-l74hWAU6RXR1UVNC-5M0cJi-95rg&zoom=15"></iframe>
 
-<p>
-  <strong>Check-Out:</strong>
-  <%= @reservation.res_end_date %>
-</p>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
 
-<%= link_to 'Back', reservations_path %>
-</div>
+                    </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+

@@ -19,6 +19,8 @@ class ReservationsController < ApplicationController
     elsif sitter_signed_in?
       current_sitter.reservations.find_by_id(params[:id])
       #respond_with(@reservation)
+    else
+      redirect_to :root
     end
   end
 

@@ -1,37 +1,73 @@
 <% content_for :head do %>
   <title><%= @sitter.display_name %> - Pet Sitters in <%= @city %>, <%= @sitter.post_code %>, UK </title>
 <% end %>
+
 <div class="container">
-	    <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<h1><%= @sitter.display_name %></h1>
-<h4>Pet Sitting in <%= @city %></h4>
-<table class="table table-nonfluid">
 
-	<tr><td><strong>Website</strong></td><td><%= link_to @sitter.website, @sitter.website %></td></tr>
-	<tr><td><strong>Nightly Rate</strong></td><td> <%= number_to_currency(@sitter.rate, :unit => "£") %></td></tr>
-	<tr><td><strong>Overview</strong></td><td><%= @sitter.description %></td></tr>
-</table>
+       <br>
 
-<% if !user_signed_in? || !sitter_signed_in? %>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @sitter.display_name %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Location:</td>
+                        <td><%= @city %>, <%= @sitter.post_code %></td>
+                      </tr>
+                      <tr>
+                        <td>Daily Rate:</td>
+                        <td><%= number_to_currency(@sitter.rate, :unit => "£") %></td>
+                      </tr>
+                      <tr>
+                        <td>Description</td>
+                        <td><%= @sitter.description %></td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                        <td>Website:</td>
+                        <td><%= link_to @sitter.website, @sitter.website %></td>
+                      </tr>
+
+
+                     
+                    </tbody>
+                  </table>
+                  
+                  <% if !user_signed_in? && !sitter_signed_in? %>
 <p><em>Please <strong><%= link_to "Sign Up", new_user_registration_path %></strong> or <strong><%= link_to "Log In", new_user_session_path %></strong> to make a reservation</em></p>
+<% elsif sitter_signed_in? %>
+<p>To make a reservation with another sitter please log out and sign into a normal user account.</p>
 <% else %>
 <%= form_tag new_reservation_path do %>
 <table class="table table-nonfluid">
 	<thead><tr><th>Check In</th><th>Check Out</th></tr></thead>
 	<tr><td class="col-md-1"><%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %></td>
-		<td class="col-md-1"><%= date_field(:reservation, :res_end_date) %></td><td><%= hidden_field_tag(:sitter_id, params[:id]) %>
+		<td class="col-md-1"><%= date_field(:reservation, :res_end_date) %></td><td><%= hidden_field_tag(:sitter_id, params[:id]) %></td></tr><tr><td></td><td>
  	 <%= submit_tag("Book Holiday") %></td></tr>
 </table>
 <% end %>
-
 <% end %>
+<iframe width="375" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= @sitter.post_code %>&key=AIzaSyC5dU-l74hWAU6RXR1UVNC-5M0cJi-95rg&zoom=15"></iframe>
 
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
 
-
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@sitter.latitude}%2C#{@sitter.longitude}" %>
-</div>
+                    </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
