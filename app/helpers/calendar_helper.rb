@@ -22,3 +22,5 @@ module CalendarHelper
     end
   end
 end
+
+#%(<a href="/reservations/#{event.id}" title="#{h(event.res_details)}">#{h(event.res_details)}</a>)

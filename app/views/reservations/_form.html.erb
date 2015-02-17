@@ -21,6 +21,10 @@
   </div>
   <% end %>
   <% if sitter_signed_in? %>
+  <div class="field">
+
+    <%= collection_select(:reservation, :id, @pets, :id, :name, {:prompt=>'Please select pet'}, {:class=>'my-custom-class'}) %>
+  </div>
  <div class="field">
   <%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %>
 </div>
@@ -52,7 +56,7 @@
     <%= f.label :reservation_details, "Additional Details" %><br>
     <%= f.text_area :res_details, class: 'form-control', placeholder: 'Breed of pet, pick up and drop off requests, any special needs, etc..' %>
   </div>
-
+<% if !params[:pet_id].nil? %><%= f.hidden_field :pet_id, :value => params[:pet_id] %> <% end %>
   <div class="field">
       <% if user_signed_in? %>
     <%= f.label :res_price, "£#{@total_price} for #{@days} days " %><br>

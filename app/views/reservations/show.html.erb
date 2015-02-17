@@ -19,7 +19,12 @@
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
+
                     <tbody>
+                      <% @pets.each do |pet| %>
+                        <tr><td>Reservation For:</td>
+                          <td><%= link_to pet.name, pet_path(pet) %></td></tr>
+                      <% end %>
                       <tr>
                         <td>Location:</td>
                         <td><%= Sitter.find(@reservation.sitter_id).post_code %></td>

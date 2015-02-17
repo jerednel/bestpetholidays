@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
       current_user.reservations.find_by_id(params[:id])
     elsif sitter_signed_in?
       current_sitter.reservations.find_by_id(params[:id])
+      @pets = current_sitter.reservations.find_by_id(params[:id]).pets
       #respond_with(@reservation)
     else
       redirect_to :root
@@ -27,8 +28,15 @@ class ReservationsController < ApplicationController
   def new
     if user_signed_in?
       @user = current_user
+
     elsif sitter_signed_in?
       @user = current_sitter
+      
+      if !params[:pet_id].nil?
+        @pet = Pet.find(params[:pet_id])
+      else
+        @pets = current_sitter.pets
+      end
     end
     if user_signed_in?
         if params[:reservation][:res_start_date] == ""  || params[:reservation][:res_end_date] == ""
@@ -56,6 +64,11 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    if !params[:reservation][:pet_id].nil?
+     @reservation.pets << Pet.find(params[:reservation][:pet_id])
+   elsif !params[:reservation][:id].nil?
+      @reservation.pets << Pet.find(params[:reservation][:id])
+    end
     @reservation.save
     respond_with(@reservation)
   end

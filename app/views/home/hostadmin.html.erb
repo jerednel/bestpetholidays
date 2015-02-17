@@ -1,4 +1,117 @@
-<a name="about"></a>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dropdown-thumbnail-preview">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="dropdown-thumbnail-preview">
+      <ul class="nav navbar-nav">
+
+<li class="dropdown thumb-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Profile <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation" class="dropdown-header">My Profile</li>
+            <li>
+                <%= link_to "View Profile", sitter_path(current_sitter.to_param) %>
+            </li>
+
+
+            <li class="divider"></li>
+            <li role="presentation" class="dropdown-header">Get More Business</li>
+            <li>
+                <a href="#">
+                    Marketing Resources                              
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="http://krowdly.co/snippets/thumbnails/4.jpg">
+                       <!-- <div class="caption">
+                            <p>You can add any text for describe thumbnail here.</p>
+                        </div>-->
+                    </div>
+                </a>
+            </li>
+          </ul>
+        </li>
+
+
+        <li class="dropdown thumb-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reservations <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation" class="dropdown-header">Reservations</li>
+            <li>
+                <%= link_to "New Reservation", new_reservation_path %>
+
+            </li>
+            <li>
+                <%= link_to "View Reservations", reservations_path %>
+
+            </li>
+
+            <li class="divider"></li>
+            <li role="presentation" class="dropdown-header">Get More Business</li>
+            <li>
+                <a href="#">
+                    Marketing Resources                              
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="http://krowdly.co/snippets/thumbnails/4.jpg">
+                       <!-- <div class="caption">
+                            <p>You can add any text for describe thumbnail here.</p>
+                        </div>-->
+                    </div>
+                </a>
+            </li>
+          </ul>
+        </li>
+
+
+
+<li class="dropdown thumb-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pets <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation" class="dropdown-header">Pets</li>
+            <li>
+                <%= link_to "Pets", new_pet_path %>
+                <!--<a href="#">
+                    New Pet                              
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="http://krowdly.co/snippets/thumbnails/1.jpg">
+                    </div>
+                </a>-->
+            </li>
+            <li>
+                <%= link_to "View Pets", pets_path %>
+
+            </li>
+
+            <li class="divider"></li>
+            <li role="presentation" class="dropdown-header">Pet Care</li>
+            <li>
+                <a href="#">
+                    Pet Care Resources                              
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="http://krowdly.co/snippets/thumbnails/4.jpg">
+                       <!-- <div class="caption">
+                            <p>You can add any text for describe thumbnail here.</p>
+                        </div>-->
+                    </div>
+                </a>
+            </li>
+          </ul>
+        </li>
+
+
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 
     <!-- Page Content -->
@@ -8,8 +121,6 @@
 
         <div class="container">
 
-            <p><%= link_to "Add Pet Profile", new_pet_path %> - <%= link_to "Add Reservation", new_reservation_path %> - <%= link_to 'Edit My Profile', edit_sitter_registration_path, :class => 'footer-menu-divider' %> -  <%= link_to 'View Profile', sitter_path(current_sitter.to_param) %></p>
-            <p><strong>Monthly Booked Revenue: </strong> <%= number_to_currency(@booked_revenue, :unit => "£") %></p>
             <% if @reservation_requests.count > 0 %>
             <h2>Reservation Requests</h2>
 

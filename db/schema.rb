@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216193017) do
+ActiveRecord::Schema.define(version: 20150217190230) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20150216193017) do
     t.datetime "updated_at"
     t.integer  "sitter_id"
   end
+
+  create_table "pets_reservations", id: false, force: true do |t|
+    t.integer "pet_id"
+    t.integer "reservation_id"
+  end
+
+  add_index "pets_reservations", ["pet_id"], name: "index_pets_reservations_on_pet_id"
+  add_index "pets_reservations", ["reservation_id"], name: "index_pets_reservations_on_reservation_id"
 
   create_table "reservations", force: true do |t|
     t.string   "res_status"

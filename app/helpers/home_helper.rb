@@ -17,8 +17,23 @@ module HomeHelper
   def event_calendar
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
+
+
       event = args[:event]
-      %(<a href="/reservations/#{event.id}" title="#{h(event.res_details)}">#{h(event.res_details)}</a>)
+
+      if !event.pets.empty?
+        event_arr = ""
+        event.pets.each do |pet|
+          event_arr = event_arr + pet.name
+        end
+        pet_names = event_arr.split(", ").to_sentence
+      else
+        pet_names = truncate(event.res_details, length: 20)
+      end
+
+      %(<a href="/reservations/#{event.id}" title="#{h(event.res_details)}">#{h(pet_names)}</a>)
     end
   end
 end
+
+#%(<a href="/reservations/#{event.id}" title="#{h(event.res_details)}">#{h(event.res_details)}</a>)
