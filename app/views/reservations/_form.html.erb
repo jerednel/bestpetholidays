@@ -21,10 +21,12 @@
   </div>
   <% end %>
   <% if sitter_signed_in? %>
-  <div class="field">
+      <% if params[:pet_id].nil? %>
+        <div class="field">
 
-    <%= collection_select(:reservation, :id, @pets, :id, :name, {:prompt=>'Please select pet'}, {:class=>'my-custom-class'}) %>
-  </div>
+          <%= collection_select(:reservation, :id, @pets, :id, :name, {:prompt=>'Please select pet'}, {:class=>'my-custom-class'}) %>
+        </div>
+        <% end %>
  <div class="field">
   <%= date_field(:reservation, :res_start_date, {:order => [:day, :month, :year]}) %>
 </div>
