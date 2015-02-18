@@ -21,9 +21,14 @@
                   <table class="table table-user-information">
 
                     <tbody>
+                      <% if @pets.count < 1 %>
+                        <tr><td>No pet associated with this reservation.</td><td><%= link_to "Add One", edit_reservation_path %></td>
+                        </tr>
+                        <% else %>
                       <% @pets.each do |pet| %>
                         <tr><td>Reservation For:</td>
                           <td><%= link_to pet.name, pet_path(pet) %></td></tr>
+                      <% end %>
                       <% end %>
                       <tr>
                         <td>Location:</td>

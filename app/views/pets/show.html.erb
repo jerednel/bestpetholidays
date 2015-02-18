@@ -1,14 +1,16 @@
 <div class="container">
 	<h2><%= @pet.name %></h2>
-	<p>Current Reservations</p>
-	<% @pet.reservations.each do |reservation| %>
-		<%= reservation.res_details %>
-		<%= reservation.res_start_date %>
-		<%= reservation.res_end_date %>
-	<% end %>
-	<p><strong>Type: </strong> <%= @pet.pet_type %></p>
+		<p><strong>Type: </strong> <%= @pet.pet_type %></p>
 	<p><strong>Breed: </strong> <%= @pet.breed %></p>
 	<p><strong>Summary: </strong> <%= @pet.summary %></p>
 	<p><%= link_to "Back to Pet List", pets_path %> - <%= link_to "Edit Pet Info", edit_pet_path %> </p>
 	<p><%= link_to 'Remove Pet', @pet, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+	<h3>Current Reservations</h3>
+	<% @pet.reservations.each do |reservation| %>
+		<div class="badger-left" data-badger="<%= reservation.res_start_date.strftime('%d %b, %Y') %> to <%= reservation.res_end_date.strftime('%d %b, %Y') %>">
+
+<%= reservation.res_details %>
+</div>
+	<% end %>
+
 </div>
