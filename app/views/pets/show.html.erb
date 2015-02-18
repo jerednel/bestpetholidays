@@ -9,6 +9,6 @@
 	<p><strong>Type: </strong> <%= @pet.pet_type %></p>
 	<p><strong>Breed: </strong> <%= @pet.breed %></p>
 	<p><strong>Summary: </strong> <%= @pet.summary %></p>
-	<p><%= link_to "Back to Pet List", pets_path %> - <%= link_to "Edit Pet Profile", edit_pet_path %> </p>
+	<p><%= link_to "Back to Pet List", pets_path %> - <%= link_to "Edit Pet Info", edit_pet_path %> </p>
 	<p><%= link_to 'Remove Pet', @pet, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 </div>
