@@ -1,27 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails web application to showcase the beginnings of an "AirBnB for pets" called Best Pet Holidays.  The site features user authentication with devise.
 
-Things you may want to cover:
+Benefits for Pet Sitters
+ * Centralized database of all pets a sitter looks after along with temperament, features and details
+ * Visual calendar showcasing upcoming and past appointments
+ * Free listing in main pet sitter search results (sorted by distance from centroid searched for)
+ * A landing page for pet sitter business with description, URL, services offered and map
 
-* Ruby version
+Benefits for Pet Owners
+ * List of pet sitters searchable by post code, city or address
+ * Keep track of all upcoming and past appointments
 
-* System dependencies
+Dependencies include:
+* Devise for User/Admin models
 
-* Configuration
+* Geocoder for looking up and mapping sitter addresses
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Event calendar to visualize pet sitting appointments pulled from the appointment database and overlayed onto the calendar
 
 
 Please feel free to use a different markup language if you do not plan to run
