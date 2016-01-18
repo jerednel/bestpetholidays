@@ -2,6 +2,14 @@
 
 This is a Ruby on Rails web application to showcase the beginnings of an "AirBnB for pets" called Best Pet Holidays.  The site features user authentication with devise.
 
+== Technical Details
+ * Built in Ruby on Rails
+ * Hosted on Heroku
+ * Postgresql database
+ * Devise gem for user authentication
+ * Geocoder gem for Google Maps API integration
+ * Event Calendar gem for the calendar/schedule view
+
 == Benefits for Pet Sitters
  * Centralized database of all pets a sitter looks after along with temperament, features and details
  * Visual calendar showcasing upcoming and past appointments
@@ -12,13 +20,4 @@ This is a Ruby on Rails web application to showcase the beginnings of an "AirBnB
  * List of pet sitters searchable by post code, city or address
  * Keep track of all upcoming and past appointments
 
-== Dependencies include:
-* Devise for User/Admin models
-
-* Geocoder for looking up and mapping sitter addresses
-
-* Event calendar to visualize pet sitting appointments pulled from the appointment database and overlayed onto the calendar
-
-<a href="http://bestpetholidays.herokuapp.com/">Demo</a>
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+{View Demo}[http://bestpetholidays.herokuapp.com/]
