@@ -13,8 +13,8 @@ end
   has_many :users, through: :reservations
   validates :display_name, presence: true
   validates :post_code, presence: true
-  validates :description, presence: true
-  
+  #validates :description, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 

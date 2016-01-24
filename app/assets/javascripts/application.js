@@ -15,3 +15,12 @@
 //= require bootstrap.min
 //= require_tree .
 
+$(document).ready(function(){
+  $('#find-sitter').click(function(){
+      $('html, body').animate({
+        scrollTop: $('#searchbox').offset().top
+      }, 1000);
+  });
+
+
+});
